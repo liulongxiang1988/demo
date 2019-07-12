@@ -1,10 +1,9 @@
 package com.example.demo;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class BlockingQueue {
-    public List queue = new LinkedList();
+    public LinkedList queue = new LinkedList();
     public int limit = 10;
 
     public BlockingQueue(int limit) {
@@ -28,7 +27,7 @@ public class BlockingQueue {
         if (queue.size() == limit){
             notifyAll();
         }
-        return queue.remove(0);
+        return queue.remove();
     }
 
 }

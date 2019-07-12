@@ -1,12 +1,11 @@
 package com.example.demo;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class BlockingQueueByLock {
-    public List queue = new LinkedList();
+    public LinkedList queue = new LinkedList();
     public int limit;
     public ReentrantLock lock = new ReentrantLock();
     public Condition condition = lock.newCondition();
@@ -15,7 +14,7 @@ public class BlockingQueueByLock {
         this.limit = limit;
     }
 
-    public List getQueue() {
+    public LinkedList getQueue() {
         return queue;
     }
 
@@ -49,7 +48,7 @@ public class BlockingQueueByLock {
                 System.out.println("弹出时队列已满");
                 condition.signalAll();
             }
-            return queue.remove(0);
+            return queue.remove();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
